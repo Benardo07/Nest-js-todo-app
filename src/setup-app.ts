@@ -1,13 +1,7 @@
-import { NestFactory } from '@nestjs/core';
-import { AppModule } from './app.module';
 import { ValidationPipe } from '@nestjs/common';
 import cookieSession = require('cookie-session');
 import cookieParser = require('cookie-parser');
-import * as dotenv from 'dotenv';
-
-async function bootstrap() {
-  dotenv.config();
-  const app = await NestFactory.create(AppModule);
+export const setupApp = (app:any) => {
   app.use(cookieParser());
   app.use(cookieSession({
     name: 'AUTH_SESSION',
@@ -25,8 +19,4 @@ async function bootstrap() {
       enableImplicitConversion: true,
     }
   }));
-  await app.listen(3000);
 }
-bootstrap();
-
-

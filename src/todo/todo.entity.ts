@@ -15,6 +15,6 @@ export class Todo {
   @Column({ default: true })
   isDone: boolean;
 
-  @ManyToOne(() => User, user => user.todos)
+  @ManyToOne(() => User, (user) => user.todos)
   user: User;
 }

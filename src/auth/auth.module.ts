@@ -4,10 +4,13 @@ import { JwtModule } from '@nestjs/jwt';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { PassportModule } from '@nestjs/passport';
 import { JwtStrategy } from './startegy/jwt.strategy';
+import { UserModule } from 'src/user/user.module';
+import { AuthController } from './auth.controller';
 
 
 @Module({
   imports: [
+    UserModule,
     PassportModule,
     ConfigModule,  // Ensure ConfigModule is imported if not globally available
     JwtModule.registerAsync({
@@ -19,7 +22,8 @@ import { JwtStrategy } from './startegy/jwt.strategy';
       }),
     }),
   ],
+  controllers: [AuthController],
   providers: [AuthService, JwtStrategy],
-  exports: [AuthService],
+  exports: [AuthService, JwtModule],
 })
 export class AuthModule {}

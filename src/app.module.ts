@@ -7,6 +7,8 @@ import { UserModule } from './user/user.module';
 import { TodoModule } from './todo/todo.module';
 import { AuthService } from './auth/auth.service';
 import { AuthModule } from './auth/auth.module';
+import { AppController } from './app.controller';
+import { AppService } from './app.service';
 
 
 @Module({
@@ -19,7 +21,7 @@ import { AuthModule } from './auth/auth.module';
       inject: [ConfigService],
       useFactory: (configService: ConfigService) => ({
         type: 'sqlite',
-        database: configService.get<string>('DB_NAME') || 'db.sqlite',
+        database: configService.get<string>('DB_NAME'),
         entities: [User, Todo],
         synchronize: true, 
       }),
@@ -28,7 +30,7 @@ import { AuthModule } from './auth/auth.module';
     TodoModule,
     AuthModule,
   ],
-  controllers: [],
-  providers: [AuthService],
+  controllers: [AppController],
+  providers: [AppService],
 })
 export class AppModule {}

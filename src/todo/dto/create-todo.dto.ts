@@ -8,8 +8,4 @@ export class CreateTodoDto {
   @IsOptional()
   @IsDate()
   dueDate?: Date;
-
-  @IsOptional()
-  @IsBoolean()
-  isDone: boolean = false;
 }
