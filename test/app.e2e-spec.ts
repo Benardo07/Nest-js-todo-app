@@ -25,7 +25,7 @@ describe('Complete User and Todo Flow (e2e)', () => {
   });
 
   it('register and login user', async () => {
-    const email = 'ben1234@mail.com';
+    const email = 'testing6@mail.com';
     const password = 'test';
     const name = 'sakata';
 
@@ -81,8 +81,7 @@ describe('Complete User and Todo Flow (e2e)', () => {
 
     expect(response.body.title).toEqual(todoTitle);
     todoId = response.body.id
-    console.log("ini todo id")
-    console.log(todoId)
+
   });
 
   it('update a todo', async () => {

@@ -59,7 +59,7 @@ export class TodoService {
   }
 
   async remove(id: number, user: User): Promise<void> {
-    const todo =  await this.todoRepository.findOneBy({id});
+    const todo =  await this.findOne(id);
     if (todo.user.id !== user.id) {
       throw new ForbiddenException('You do not have permission to delete');
     }
